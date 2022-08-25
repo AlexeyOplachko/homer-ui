@@ -22,7 +22,4 @@ jobs:
     - name: Run script file
       shell: bash
       run: |
-        cd .github
-        ls
-        cd workflows
-        ls
+         .github/workflows/verifyimport.sh
