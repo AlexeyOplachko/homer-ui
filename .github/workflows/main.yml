@@ -18,7 +18,7 @@ jobs:
   run_tests:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Run script file
       run: |
          chmod +x .github/workflows/verifyimports.sh
