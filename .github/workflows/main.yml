@@ -22,5 +22,5 @@ jobs:
     - name: Run script file
       shell: bash
       run: |
-         chmod +x .github/workflows/verifyimports.sh
-         ./public/scripts/verifyimports.sh
+         chmod +x ./.github/workflows/verifyimports.sh
+         ./.github/workflows/verifyimports.sh
