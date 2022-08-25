@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run script file
+      shell: bash
       run: |
          chmod +x .github/workflows/verifyimports.sh
          ./public/scripts/verifyimports.sh
-      shell: wsl
