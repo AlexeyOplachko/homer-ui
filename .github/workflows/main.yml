@@ -32,6 +32,5 @@ jobs:
           .github/scripts/verifyimports.sh
     - name: Verify licenses   
       shell: bash
-      run: |
-          chmod u+x .github/scripts/verifylicenses.sh
-          .github/scripts/verifylicenses.sh
+      run: npx license-checker --failOn MIT
+
