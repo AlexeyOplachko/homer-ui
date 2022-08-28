@@ -30,4 +30,6 @@ jobs:
           .github/scripts/verifyimports.sh
     - name: Verify licenses   
       shell: bash
-      run: npx license-checker
+      run: |
+            npm i
+            npx license-checker --summary
