@@ -22,6 +22,8 @@ jobs:
         node-version: [16.x]
     steps:
     - uses: actions/checkout@v3
+    - name: NPM install
+      run: npm i --force
     - name: Verify imports
       shell: bash
       continue-on-error: true
@@ -30,6 +32,5 @@ jobs:
           .github/scripts/verifyimports.sh
     - name: Verify licenses   
       shell: bash
-      run: |
-            npm i --force
-            npx license-checker --summary
+      run: chmod u+x .github/scripts/verifylicenses.sh
+          .github/scripts/verifylicenses.sh
