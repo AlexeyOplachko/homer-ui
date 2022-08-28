@@ -17,10 +17,16 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
     - uses: actions/checkout@v3
-    - name: Run script file
+    - name: Verify imports
       shell: bash
       run: |
           chmod u+x .github/scripts/verifyimports.sh
           .github/scripts/verifyimports.sh
+    - name: Verify licenses   
+      shell: bash
+      run: npx license-checker
