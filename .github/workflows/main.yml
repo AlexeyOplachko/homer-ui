@@ -20,5 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run script file
+      shell: bash
       run: |
-         .github/scripts/verifyimports.sh
+          chmod u+x .github/scripts/verifyimports.sh
+          .github/scripts/verifyimports.sh
