@@ -31,5 +31,5 @@ jobs:
     - name: Verify licenses   
       shell: bash
       run: |
-            npm i
+            npm i --force
             npx license-checker --summary
