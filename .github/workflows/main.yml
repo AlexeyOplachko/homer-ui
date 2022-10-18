@@ -30,11 +30,10 @@ jobs:
           chmod u+x .github/scripts/bumpversion.sh
           .github/scripts/bumpversion.sh
     - name: Create a Release
-      uses: elgohr/Github-Release-Action@v4
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      uses: rickstaa/action-create-tag@v1
       with:
-        title: ${{ steps.version.outputs.TAG_NAME }}
+        tag: ${{ steps.version.outputs.TAG_NAME }}
+        message: ${{ steps.version.outputs.TAG_NAME }}
     - name: NPM install
       run: npm i --force
     - name: Verify imports
