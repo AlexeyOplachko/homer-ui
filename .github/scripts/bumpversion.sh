@@ -6,3 +6,6 @@ VERSION_STRING="export const VERSION = '$VERSION_FOR_OUTPUT'"
 echo $VERSION_STRING > ./src/VERSION.ts
 
 echo "TAG_NAME=$VERSION_FOR_OUTPUT" >> $GITHUB_OUTPUT
+
+badge="<img src=\"https://img.shields.io/badge/Version-$VERSION_FOR_OUTPUT-blue?style=flat/\"/>"
+sed -i "1s@.*@$badge@" ./README.md
