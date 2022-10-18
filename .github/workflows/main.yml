@@ -29,6 +29,14 @@ jobs:
       run: |
           chmod u+x .github/scripts/bumpversion.sh
           .github/scripts/bumpversion.sh
+    - name: Push bumped version.ts
+      run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
     - name: Create a Release
       uses: rickstaa/action-create-tag@v1
       with:
@@ -36,12 +44,6 @@ jobs:
         message: ${{ steps.version.outputs.TAG_NAME }}
     - name: NPM install
       run: npm i --force
-    - name: Verify imports
-      shell: bash
-      continue-on-error: true
-      run: |
-          chmod u+x .github/scripts/verifyimports.sh
-          .github/scripts/verifyimports.sh
     - name: Verify licenses   
       shell: bash
       run: |
