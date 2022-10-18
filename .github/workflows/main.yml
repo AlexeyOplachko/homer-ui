@@ -29,13 +29,12 @@ jobs:
       run: |
           chmod u+x .github/scripts/bumpversion.sh
           .github/scripts/bumpversion.sh
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@v4
       env:
-        GITHUB_TOKEN: ${{ secrets.token }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        tag_name: ${{ steps.version.outputs.TAG_NAME }}
+        title: ${{ steps.version.outputs.TAG_NAME }}
     - name: NPM install
       run: npm i --force
     - name: Verify imports
