@@ -22,17 +22,12 @@ jobs:
         node-version: [16.x]
     steps:
     - uses: actions/checkout@v3
-    - name: 'Automated Version Bump'
-      if: github.event_name != 'pull_request'
-      id: version
-      uses: 'phips28/gh-action-bump-version@master'
-      with:
-        version-type:  'minor'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: 'version check'
-      if: github.event_name != 'pull_request'
-      run: echo ${{steps.version.outputs.newTag}}
+    - name: Bump version
+      shell: bash
+      continue-on-error: true
+      run: |
+          chmod u+x .github/scripts/bumpversion.sh
+          .github/scripts/bumpversion.sh
     - name: NPM install
       run: npm i --force
     - name: Verify imports
